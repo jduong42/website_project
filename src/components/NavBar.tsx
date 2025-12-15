@@ -5,7 +5,7 @@ const NavBar: React.FC = () => {
   return (
     <header>
       <nav>
-        <img src="/logo.png" alt="Apple logo" />
+        <img src="/logo.svg" alt="Apple logo" />
 
         <ul>
           {navItems.map((item) => (
