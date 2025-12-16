@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
 
       <video ref={videoRef} src="/videos/hero.mp4" autoPlay muted playsInline />
 
-      <button>Buy</button>
+      <button>Osta</button>
 
       <p>Alkaen 1 899 €</p>
     </section>
