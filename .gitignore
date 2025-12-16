@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# JSX model files
+src/components/models/backup/*.jsx
