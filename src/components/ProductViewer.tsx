@@ -2,21 +2,23 @@ import React from "react";
 import useMacbookStore from "../store/";
 import { clsx } from "clsx";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Macbook14 from "./models/Macbook-14";
-import Macbook16 from "./models/Macbook-16";
-import Macbook from "./models/Macbook";
-import StudioLights from "./StudioLights";
+import StudioLights from "./three/StudioLights";
+import ModelSwitcher from "./three/ModelSwitcher";
+import { useMediaQuery } from "react-responsive";
 
 const ProductViewer: React.FC = () => {
-  const { color, setColor, scale, setScale, reset } = useMacbookStore();
+  const { color, setColor, scale, setScale } = useMacbookStore();
+
+  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <section id="product-viewer">
-      <h2> Take a closer look.</h2>
+      <h2> Katso tarkemmin.</h2>
 
       <div className="controls">
-        <p className="info">MacbookPro 16" in Space Black</p>
+        <p className="info" style={{ fontSize: 20 }}>
+          MacbookPro | Saatavilla 14" ja 16" hopeana & tähtimustana.{" "}
+        </p>
 
         <div className="flex-center gap-5 mt-5">
           <div className="color-control">
@@ -58,14 +60,15 @@ const ProductViewer: React.FC = () => {
         </div>
       </div>
 
-      <p className="text-white text-4xl">Render Canvas</p>
       <Canvas
         id="canvas"
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
       >
         <StudioLights />
-        <Macbook14 scale={0.06} position={[0, 0, 0]} />
-        <OrbitControls enableZoom={true} />
+        <ModelSwitcher
+          scale={isMobile ? scale - 0.03 : scale}
+          isMobile={isMobile}
+        />
       </Canvas>
     </section>
   );

@@ -1,13 +1,12 @@
 import * as THREE from "three";
-import { type JSX } from "react";
-// Use 'import type' for type-only imports like GLTF
+import { useEffect, type JSX } from "react";
 import type { GLTF } from "three-stdlib";
 import { useGLTF, useTexture } from "@react-three/drei";
+import useMacbookStore from "../../store";
+import { noChangeParts } from "../../constants";
 
-// 1. Define the component props using the stable global R3F type
 type MacbookProps = JSX.IntrinsicElements["group"];
 
-// 2. Define the exact names of the meshes and materials
 type MeshNames =
   | "Object_10"
   | "Object_16"
@@ -50,21 +49,39 @@ type MaterialNames =
   | "sfCQkHOWyrsLmor"
   | "ZCDwChwkbBfITSW";
 
-// 3. Define the final GLTFResult using Record<Names, Type>
 type GLTFResult = GLTF & {
   nodes: Record<MeshNames, THREE.Mesh>;
-  materials: Record<MaterialNames, THREE.Material>;
+  materials: Record<MaterialNames, THREE.Material | THREE.Material[]>;
 };
 
-// 4. Update the function name and apply the props type
 export default function MacbookModel14(props: MacbookProps) {
-  // 5. Update the GLTF path and apply the double assertion
-  const { nodes, materials } = useGLTF(
+  const { color } = useMacbookStore();
+  const { nodes, materials, scene } = useGLTF(
     "/models/macbook-14-transformed.glb"
   ) as unknown as GLTFResult;
 
-  // Type annotation for the texture
   const texture: THREE.Texture = useTexture("/screen.png");
+
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.needsUpdate = true;
+
+  useEffect(() => {
+    scene.traverse((child: THREE.Object3D) => {
+      if (child instanceof THREE.Mesh) {
+        if (!noChangeParts.includes(child.name)) {
+          const materialsToUpdate = Array.isArray(child.material)
+            ? child.material
+            : [child.material];
+
+          materialsToUpdate.forEach((mat) => {
+            if ((mat as THREE.Material & { color: THREE.Color }).color) {
+              (mat as THREE.Material & { color: THREE.Color }).color.set(color);
+            }
+          });
+        }
+      }
+    });
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
