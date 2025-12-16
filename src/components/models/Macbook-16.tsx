@@ -4,61 +4,15 @@ import type { GLTF } from "three-stdlib";
 import { useGLTF, useTexture } from "@react-three/drei";
 import useMacbookStore from "../../store";
 import { noChangeParts } from "../../constants";
+import type { MacbookGLTFResult } from "../../constants/gltf-types";
 
 type MacbookProps = JSX.IntrinsicElements["group"];
-
-type MeshNames =
-  | "Object_10"
-  | "Object_16"
-  | "Object_20"
-  | "Object_22"
-  | "Object_30"
-  | "Object_32"
-  | "Object_34"
-  | "Object_38"
-  | "Object_42"
-  | "Object_48"
-  | "Object_54"
-  | "Object_58"
-  | "Object_66"
-  | "Object_74"
-  | "Object_82"
-  | "Object_96"
-  | "Object_107"
-  | "Object_123"
-  | "Object_127";
-
-type MaterialNames =
-  | "PaletteMaterial001"
-  | "zhGRTuGrQoJflBD"
-  | "PaletteMaterial002"
-  | "lmWQsEjxpsebDlK"
-  | "LtEafgAVRolQqRw"
-  | "iyDJFXmHelnMTbD"
-  | "eJObPwhgFzvfaoZ"
-  | "nDsMUuDKliqGFdU"
-  | "CRQixVLpahJzhJc"
-  | "YYwBgwvcyZVOOAA"
-  | "SLGkCohDDelqXBu"
-  | "WnHKXHhScfUbJQi"
-  | "fNHiBfcxHUJCahl"
-  | "LpqXZqhaGCeSzdu"
-  | "gMtYExgrEUqPfln"
-  | "PaletteMaterial003"
-  | "JvMFZolVCdpPqjj"
-  | "sfCQkHOWyrsLmor"
-  | "ZCDwChwkbBfITSW";
-
-type GLTFResult = GLTF & {
-  nodes: Record<MeshNames, THREE.Mesh>;
-  materials: Record<MaterialNames, THREE.Material | THREE.Material[]>;
-};
 
 export default function MacbookModel16(props: MacbookProps) {
   const { color } = useMacbookStore();
   const { nodes, materials, scene } = useGLTF(
     "/models/macbook-16-transformed.glb"
-  ) as unknown as GLTFResult;
+  ) as unknown as MacbookGLTFResult;
 
   const texture: THREE.Texture = useTexture("/screen.png");
 
