@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { useEffect, type JSX } from "react";
-import type { GLTF } from "three-stdlib";
 import { useGLTF, useTexture } from "@react-three/drei";
 import useMacbookStore from "../../store";
 import { noChangeParts } from "../../constants";
