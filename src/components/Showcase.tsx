@@ -22,7 +22,7 @@ const Showcase: React.FC = () => {
         .to(".mask img", {
           transform: "scale(1.1)",
         })
-        .to("content", { opacity: 1, y: 0, ease: "power1.in" });
+        .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
     }
   });
 
@@ -44,12 +44,20 @@ const Showcase: React.FC = () => {
               <p>
                 Esittelyssä{" "}
                 <span className="text-white">
-                  M4, seuraavan sukupolven Apple-siru
+                  M4, seuraavan sukupolven Apple-siru.
                 </span>
-                . M4 tehot
               </p>
-              <p>teksti</p>
-              <p>teksti</p>
+              <p>
+                M4 ohjaa Applen älykkyyttä Macbook Pro mallissa, joten voit
+                kirjoittaa, luoda ja saada enemmän aikaan vaivattomasti. Kaikki
+                tämä uskomattoman ohuessa, kevyessä ja tehokkaassa laitteessa.
+              </p>
+              <p>
+                Uusi näyttömoottori tarjoaa henkeäsalpaavan tarkkuuden, värien
+                todenmukaisuuden ja kirkkauden. Ja seuraavan sukupolven
+                näytönohjain laitteistokiihdytetyllä säteenseurantatekniikalla
+                tuo konsolitason grafiikan sormenpäidesi ulottuville.
+              </p>
               <p className="text-primary">Lue lisää</p>
             </div>
           </div>
@@ -57,12 +65,12 @@ const Showcase: React.FC = () => {
           <div className="max-w-3xs space-y-14">
             <div className="space-y-2">
               <p>Jopa</p>
-              <p> 4 kertaa nopeampi</p>
+              <h3> 4x kertaa nopeampi</h3>
               <p> ammattilaiskäsittely teho verrattuna M2 siruun</p>
             </div>
             <div className="space-y-2">
               <p>Jopa</p>
-              <p> 1.5 kertaa nopeampi</p>
+              <h3> 1.5x kertaa nopeampi</h3>
               <p> laskentateho verrattuna M2 siruun</p>
             </div>
           </div>
