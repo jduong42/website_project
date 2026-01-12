@@ -1,65 +1,42 @@
+import { useEffect } from "react";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
+import useMacbookStore from "../../store/index";
+import { noChangeParts } from "../../constants/index";
+import { Color } from "three";
 import * as THREE from "three";
-import { type JSX } from "react";
-import type { GLTF } from "three-stdlib";
-import { useGLTF, useTexture } from "@react-three/drei";
 
-type MacbookProps = JSX.IntrinsicElements["group"];
+interface GLTFResult {
+  nodes: {
+    [key: string]: THREE.Mesh;
+  };
+  materials: {
+    [key: string]: THREE.Material;
+  };
+  scene: THREE.Group;
+}
 
-type MeshNames =
-  | "Object_10"
-  | "Object_16"
-  | "Object_20"
-  | "Object_22"
-  | "Object_30"
-  | "Object_32"
-  | "Object_34"
-  | "Object_38"
-  | "Object_42"
-  | "Object_48"
-  | "Object_54"
-  | "Object_58"
-  | "Object_66"
-  | "Object_74"
-  | "Object_82"
-  | "Object_96"
-  | "Object_107"
-  | "Object_123"
-  | "Object_127";
-
-type MaterialNames =
-  | "PaletteMaterial001"
-  | "zhGRTuGrQoJflBD"
-  | "PaletteMaterial002"
-  | "lmWQsEjxpsebDlK"
-  | "LtEafgAVRolQqRw"
-  | "iyDJFXmHelnMTbD"
-  | "eJObPwhgFzvfaoZ"
-  | "nDsMUuDKliqGFdU"
-  | "CRQixVLpahJzhJc"
-  | "YYwBgwvcyZVOOAA"
-  | "SLGkCohDDelqXBu"
-  | "WnHKXHhScfUbJQi"
-  | "fNHiBfcxHUJCahl"
-  | "LpqXZqhaGCeSzdu"
-  | "gMtYExgrEUqPfln"
-  | "PaletteMaterial003"
-  | "JvMFZolVCdpPqjj"
-  | "sfCQkHOWyrsLmor"
-  | "ZCDwChwkbBfITSW";
-
-type GLTFResult = GLTF & {
-  nodes: Record<MeshNames, THREE.Mesh>;
-  materials: Record<MaterialNames, THREE.Material>;
-};
-
-export default function Macbook(props: MacbookProps) {
-  // Assert the type of the returned GLTF data
-  const { nodes, materials } = useGLTF(
+export default function MacbookModel(
+  props: React.JSX.IntrinsicElements["group"]
+) {
+  const { color, texture } = useMacbookStore();
+  const { nodes, materials, scene } = useGLTF(
     "/models/macbook-transformed.glb"
   ) as unknown as GLTFResult;
 
-  // Type annotation for the texture
-  const texture: THREE.Texture = useTexture("/screen.png");
+  const screen = useVideoTexture(texture);
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        if (!noChangeParts.includes(mesh.name)) {
+          (mesh.material as THREE.MeshStandardMaterial).color = new Color(
+            color
+          );
+        }
+      }
+    });
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
@@ -148,12 +125,8 @@ export default function Macbook(props: MacbookProps) {
         material={materials.JvMFZolVCdpPqjj}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      <mesh
-        geometry={nodes.Object_123.geometry}
-        material={materials.sfCQkHOWyrsLmor}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
-        <meshBasicMaterial map={texture} />
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
+        <meshBasicMaterial map={screen} />
       </mesh>
       <mesh
         geometry={nodes.Object_127.geometry}

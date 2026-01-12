@@ -78,3 +78,76 @@ export const performanceImgPositions = [
     bottom: 0,
   },
 ];
+
+export interface Feature {
+  id: number;
+  icon: string;
+  highlight: string;
+  text: string;
+  styles: string;
+}
+
+export const features: Feature[] = [
+  {
+    id: 1,
+    icon: "/feature-icon1.svg",
+    highlight: "Sähköpostiassistentti.",
+    text: " Tiivistä viestit ja luonnostele vastaukset hetkessä – pysy aina ajan tasalla postilaatikostasi.",
+    styles: "left-5 md:left-20 top-[20%] opacity-0 translate-y-5",
+  },
+  {
+    id: 2,
+    icon: "/feature-icon2.svg",
+    highlight: "Kuvatyökalut.",
+    text: " Luo tai muokkaa kuvia vaivatta. Kirjoita vain, mitä kuvittelet, ja anna tekoälyn herättää visiosi eloon.",
+    styles: "right-5 md:right-20 top-[30%] opacity-0 translate-y-5",
+  },
+  {
+    id: 3,
+    icon: "/feature-icon3.svg",
+    highlight: "Älykkäät tiivistelmät.",
+    text: " Muuta pitkät artikkelit, raportit ja muistiinpanot selkeiksi, lyhyiksi tiivistelmiksi muutamassa sekunnissa.",
+    styles: "left-5 md:left-20 top-[50%] opacity-0 translate-y-5",
+  },
+  {
+    id: 4,
+    icon: "/feature-icon4.svg",
+    highlight: "AirDrop.",
+    text: " Langattomasti jaa valokuvia, suuria tiedostoja ja muuta iPhonen, Macin ja muiden laitteiden välillä.",
+    styles: "right-5 md:right-20 top-[70%] opacity-0 translate-y-5",
+  },
+  {
+    id: 5,
+    icon: "/feature-icon5.svg",
+    highlight: "Kirjoitustyökalu.",
+    text: " Kirjoita fiksummin ja nopeammin. Olipa kyseessä blogi, essee tai kuvateksti, tekoäly auttaa viimeistelmään sanomasi.",
+    styles: "left-5 md:left-20 top-[90%] opacity-0 translate-y-5",
+  },
+];
+
+export interface FeatureSequence {
+  videoPath: string;
+  boxClass: string;
+  delay: number;
+}
+
+export const featureSequence: FeatureSequence[] = [
+  { videoPath: "/videos/feature-1.mp4", boxClass: ".box1", delay: 1 },
+  { videoPath: "/videos/feature-2.mp4", boxClass: ".box2", delay: 0 },
+  { videoPath: "/videos/feature-3.mp4", boxClass: ".box3", delay: 0 },
+  { videoPath: "/videos/feature-4.mp4", boxClass: ".box4", delay: 0 },
+  { videoPath: "/videos/feature-5.mp4", boxClass: ".box5", delay: 0 },
+];
+
+export interface FooterLink {
+  label: string;
+  link: string;
+}
+
+export const footerLinks: FooterLink[] = [
+  { label: "Privacy Policy", link: "#" },
+  { label: "Terms of Use", link: "#" },
+  { label: "Sales Policy", link: "#" },
+  { label: "Legal", link: "#" },
+  { label: "Site Map", link: "#" },
+];
