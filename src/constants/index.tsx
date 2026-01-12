@@ -6,10 +6,14 @@ export interface NavItem {
 export const navItems = [
   { label: "Store", url: "/store" },
   { label: "Mac", url: "/mac" },
+  { label: "iPad", url: "/ipad" },
   { label: "iPhone", url: "/iphone" },
   { label: "Watch", url: "/watch" },
-  { label: "Vision", url: "/vision" },
   { label: "AirPods", url: "/airpods" },
+  { label: "TV & Koti", url: "/tv-koti" },
+  { label: "Viihde", url: "/viihde" },
+  { label: "Lisävarusteet", url: "/lisavarusteet" },
+  { label: "Tuki", url: "/tuki" },
 ];
 
 export const noChangeParts = [
@@ -145,9 +149,9 @@ export interface FooterLink {
 }
 
 export const footerLinks: FooterLink[] = [
-  { label: "Privacy Policy", link: "#" },
-  { label: "Terms of Use", link: "#" },
-  { label: "Sales Policy", link: "#" },
-  { label: "Legal", link: "#" },
-  { label: "Site Map", link: "#" },
+  { label: "Tietosuojakäytäntö", link: "#" },
+  { label: "Käyttöehdot", link: "#" },
+  { label: "Myynti ja palautukset", link: "#" },
+  { label: "Lakitiedot", link: "#" },
+  { label: "Sivukartta", link: "#" },
 ];

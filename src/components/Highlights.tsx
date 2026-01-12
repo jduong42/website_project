@@ -21,22 +21,22 @@ const Highlights: React.FC = () => {
 
   return (
     <section id="highlights">
-      <h2>There's never been a better time to upgrade.</h2>
-      <h3>Here's what you get with new MacBook Pro.</h3>
+      <h2>Nyt on paras hetki päivittää uuteen.</h2>
+      <h3>Tässä on mitä saat uudella MacBook Prolla.</h3>
 
       <div className="masonry">
         <div className="left-column">
           <div>
             <img src="/laptop.png" alt="Laptop" />
-            <p>Fly through demanding task up to 9.8x faster.</p>
+            <p>Suoriudu vaativista tehtävistä jopa 9.8 kertaa nopeammin.</p>
           </div>
           <div>
             <img src="/sun.png" alt="Sun" />
             <p>
               {" "}
-              A stunning <br />
+              Upea <br />
               Liquid Retina XDR <br />
-              display.
+              -näyttö.
             </p>
           </div>
         </div>
@@ -45,17 +45,17 @@ const Highlights: React.FC = () => {
             <img src="/ai.png" alt="AI" />
             <p>
               {" "}
-              Built for <br />
-              <span>Apple Intelligence. </span>
+              Suunniteltu <br />
+              <span>Apple Intelligence -ominaisuutta varten. </span>
             </p>
           </div>
           <div>
             <img src="/battery.png" alt="Battery" />
             <p>
-              Up to
-              <span className="green-gradient"> 14 more hours </span>
-              battery life.
-              <span className="text-dark-100">(Up to 24 hours total.)</span>
+              Jopa
+              <span className="green-gradient"> 14 tuntia enemmän </span>
+              akunkestoa.
+              <span className="text-dark-100">(Yhteensä jopa 24 tuntia.)</span>
             </p>
           </div>
         </div>

@@ -7,8 +7,7 @@ const Footer: React.FC = () => {
       <div className="info">
         <p>
           {" "}
-          More ways to shop: Find an Apple Store or other retailer near you. Or
-          call
+          Etsi Apple Store tai muu jälleenmyyjä läheltäsi. Tai soita meille.
         </p>
         <img src="/logo.svg" alt="Apple Logo" />
       </div>
@@ -16,7 +15,7 @@ const Footer: React.FC = () => {
       <hr />
 
       <div className="links">
-        <p>Copyright © 2024 Apple Inc. All rights reserved.</p>
+        <p>Tekijänoikeudet © 2024 Apple Inc. Kaikki oikeudet pidätetään.</p>
 
         <ul>
           {footerLinks.map(({ label, link }) => (
